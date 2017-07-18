@@ -1,9 +1,10 @@
-//http://mherman.org/blog/2016/11/05/developing-a-restful-api-with-node-and-typescript/#.WWzjGIgrKM_
-
 import * as path from 'path';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
+
+import PersonRouter from './router/personRouter';
+
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -37,7 +38,9 @@ class App {
         message: 'Hello World!'
       });
     });
+
     this.express.use('/', router);
+    this.express.use('/api/v1/person', PersonRouter);
   }
 
 }
